@@ -8,6 +8,9 @@ import { Country } from '../interface/country';
 export class CountriesService {
   private apiurl:string='https://restcountries.com/v3.1'
   constructor(private httpClient: HttpClient) { }
+  searcgcountry(code:string):Observable<Country[]>{
+    return this.httpClient.get<Country[]>(`${this.apiurl}/alpha/${code}`)
+  }
   serachbycapital(query:string):Observable<Country[]>{
     return this.httpClient.get<Country[]>(`${this.apiurl}/capital/${query}`).pipe(
       catchError(()=>of([]))
