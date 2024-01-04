@@ -1,0 +1,15 @@
+<h2>By Country</h2>
+<hr>
+<div class="row">
+  <div class="col">
+    <!----SerachBox-->
+    <app-searchBox (onValue)="serachbycountry($event)" placeholder="Search by country"> </app-searchBox>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <!-----Result Table-->
+    <app-countrytable [contries]="contries"></app-countrytable>
+  </div>
+</div>
