@@ -11,15 +11,16 @@ import { switchMap, tap } from 'rxjs';
   styleUrls: ['./countryPage.component.css']
 })
 export class CountryPageComponent implements OnInit {
-
+  public countries?: Country
   constructor(private ActivatedRoute:ActivatedRoute,private country:CountriesService,private route:Router) { }
 
   ngOnInit() {
     this.ActivatedRoute.params.pipe(switchMap(({id})=>this.country.searcgcountry(id))).subscribe(country =>{
-     if(country){
+     if(!country){
       return this.route.navigateByUrl('')
      }
-      return
+     return this.countries = country
+
     })
   }
 

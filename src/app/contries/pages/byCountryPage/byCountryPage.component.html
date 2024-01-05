@@ -3,13 +3,14 @@
 <div class="row">
   <div class="col">
     <!----SerachBox-->
-    <app-searchBox (onValue)="serachbycountry($event)" placeholder="Search by country"> </app-searchBox>
-
+    <app-searchBox [initialValue]="initialValue" (onDebounce)="serachbycountry($event)" (onValue)="serachbycountry($event)" placeholder="Search by Country"> </app-searchBox>
   </div>
 </div>
 <div class="row">
   <div class="col">
     <!-----Result Table-->
+
+    <app-loader *ngIf="isLoading"></app-loader>
     <app-countrytable [contries]="contries"></app-countrytable>
   </div>
 </div>

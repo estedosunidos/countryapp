@@ -10,13 +10,19 @@ import { Country } from '../../interface/country';
 export class ByCapitalPageComponent implements OnInit {
 
   constructor(private Country:CountriesService) { }
- public contries: Country[]=[]
+  public isLoading:boolean = false;
+  public contries: Country[]=[]
+  public initialValue:string = '';
   ngOnInit() {
+    this.contries=this.Country.chacstore.byCapital.Country
+    this.initialValue=this.Country.chacstore.byCapital.term
   }
   serachbycapital(value:string){
+    this.isLoading = true;
     this.Country.serachbycapital(value).subscribe(data=>{
       this.contries=data;
       console.log(data);
+      this.isLoading = false;
     })
   }
 }

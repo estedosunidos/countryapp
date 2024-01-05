@@ -2,5 +2,7 @@
   type="text"
   class="form-control"
   [placeholder]="placeholder"
+  [value]="initialValue"
   (keyup.enter)="emitValue(txtsearchinput.value)"
+  (keyup)="onKeyPress(txtsearchinput.value)"
   #txtsearchinput>

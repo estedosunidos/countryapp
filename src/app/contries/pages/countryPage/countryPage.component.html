@@ -1,3 +1,43 @@
-<p>
-  countryPage works!
-</p>
+<ng-template #loading>
+  <div class="alert alert-info">
+      wait for  me please
+  </div>
+</ng-template>
+<div *ngIf="countries; else loading">
+  <div class="row">
+    <div class="col-12">
+      <h2>Country:<strong>{{countries.name.common}}</strong></h2>
+      <hr>
+      <div class="row">
+        <div class="col-4">
+          <h3>Bandera</h3>
+          <img [src]="countries.flags.svg" [alt]="countries.name.common" class="img-thumbnail">
+        </div>
+        <div class="col">
+          <h3>Informacion</h3>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>Poblacion</strong>{{countries.population | number}}
+            </li>
+            <li class="list-group-item">
+              <strong>Codigo numerico</strong>{{countries.cca3}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+        <h3>Trducciones</h3>
+        <div class="d-flex flex-wrap">
+          <span class="badge bg-primary m-1">{{countries.translations['ara'].common}}</span>
+          <span class="badge bg-primary m-1">{{countries.translations['bre'].common}}</span>
+          <span class="badge bg-primary m-1">{{countries.translations['ces'].common}}</span>
+          <span class="badge bg-primary m-1">{{countries.translations['cym'].common}}</span>
+          <span class="badge bg-primary m-1">{{countries.translations['deu'].common}}</span>
+        </div>
+    </div>
+  </div>
+</div>

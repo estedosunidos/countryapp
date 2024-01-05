@@ -1,9 +1,12 @@
 <h2>By Region</h2>
 <hr>
 <div class="row">
-  <div class="col">
+  <div class="col txt-center">
     <!----SerachBox-->
-    <app-searchBox (onValue)="serachbyregion($event)" placeholder="search by region"> </app-searchBox>
+    <button *ngFor="let Region of region" class="btn mx-2"  (click)="serachbyregion(Region)" [ngClass]="{'btn-outline-primary':selectedRegion===Region}">
+      {{Region}}
+
+    </button>
   </div>
 </div>
 <div class="row">

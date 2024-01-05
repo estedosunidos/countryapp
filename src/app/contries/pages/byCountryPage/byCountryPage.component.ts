@@ -9,14 +9,20 @@ import { CountriesService } from '../../service/countries.service';
 })
 export class ByCountryPageComponent implements OnInit {
 
-  constructor(private Country:CountriesService) { }
-  public contries: Country[]=[]
+  constructor(private Country: CountriesService) { }
+  public contries: Country[] = []
+  public isLoading: boolean = false;
+  public initialValue:string = '';
   ngOnInit() {
+    this.contries=this.Country.chacstore.byCountrie.Country
+    this.initialValue=this.Country.chacstore.byCountrie.term
   }
-  serachbycountry(value:string){
-    this.Country.searchbycountry(value).subscribe(data=>{
-      this.contries=data;
+  serachbycountry(value: string) {
+    this.isLoading = true;
+    this.Country.searchbycountry(value).subscribe(data => {
+      this.contries = data;
       console.log(data);
+      this.isLoading = false;
     })
   }
 }
